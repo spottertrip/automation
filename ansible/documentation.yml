@@ -1,0 +1,6 @@
+---
+
+- name: Install Documentation
+  hosts: [documentation]
+  roles:
+    - { role: documentation, tags: ['documentation'] }

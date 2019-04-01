@@ -1,0 +1,60 @@
+---
+# Common preprovisioning tasks
+
+# Ansible fails without that
+- name: Install python2
+  raw: apt-get -y install python-simplejson
+  tags: packages, common
+
+- name: gather facts
+  setup:
+  tags:
+    - always
+
+- name: Cleanup and upgrade
+  apt:
+    autoclean: yes
+    autoremove: yes
+    cache_valid_time: 3600
+    update_cache: yes
+    upgrade: safe
+  tags: packages, common
+
+- name: Install basic tools
+  apt:
+      name:
+          - apt-transport-https
+          - curl
+          - git
+          - software-properties-common
+          - python3-pip
+          - python3-requests
+          - python-pip
+          - vim
+          - xz-utils
+          - lsof
+          - unzip
+          - tmux
+          - unzip
+          - ssl-cert
+          - iotop
+          - rsync
+          - knot-dnsutils
+          - ldnsutils
+          - iputils-ping
+      state: present
+  tags: packages, base
+
+- name: Install sudo
+  apt:
+    name: sudo
+    state: present
+    dpkg_options: force-confnew
+  tags: packages, base
+
+- name: Install docker python engine
+  pip:
+    name: 
+      - docker
+      - docker-compose
+  tags: common, packages

@@ -1,0 +1,10 @@
+- name: Install Docker
+  hosts: [documentation]
+  gather_facts: False
+  roles:
+    - { role: common, tags: ["common"] }
+    - { role: ansible-role-docker, tags: ["docker"] }
+
+- name: Install Documentation
+  import_playbook: documentation.yml
+  tags: ['documentation']

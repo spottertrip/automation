@@ -1,0 +1,11 @@
+---
+
+- name: Create a data container
+  docker_container:
+    name: spotter-documentation
+    image: swaggerapi/swagger-ui
+    env:
+      API_URL: "{{ documentation_api_url }}"
+    state: started
+    ports:
+      - "80:8080"

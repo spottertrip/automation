@@ -1,0 +1,13 @@
+---
+# Setup scw facts
+
+- name: Create directory
+  file:
+    path: "/etc/ansible/facts.d"
+    state: "directory"
+
+- name: Add scaleway facts
+  copy:
+    src: scw.fact
+    dest: /etc/ansible/facts.d/scw.fact
+    mode: 0755

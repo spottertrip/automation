@@ -1,0 +1,6 @@
+# Commons parameters for all ELK Stack
+es_apt_key: "https://artifacts.elastic.co/GPG-KEY-elasticsearch"
+es_apt_url: "deb https://artifacts.elastic.co/packages/{{ es_repo_name }}/apt stable main"
+es_apt_url_old: "deb http://packages.elastic.co/elasticsearch/{{ es_repo_name }}/debian stable main"
+es_use_repository: true
+es_repo_name: "{{ es_major_version }}"

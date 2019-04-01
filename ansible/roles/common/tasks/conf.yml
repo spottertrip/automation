@@ -1,0 +1,8 @@
+---
+
+- name: Fix dhclient to resolve compute nodes by UUID
+  blockinfile:
+    path: /etc/dhcp/dhclient.conf
+    block: |
+      supersede domain-name "pub.cloud.scaleway.com cloud.online.net";
+      supersede domain-search "pub.cloud.scaleway.com";
